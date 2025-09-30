@@ -1,0 +1,292 @@
+<div id="library-search-container" style="
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+">
+    <div style="
+        background: rgba(0, 33, 71, 0.15); 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(199, 147, 22, 0.2);
+        padding: 40px;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    ">
+        
+        <h1 style="
+            color: #ffffff; /* White text */
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0 0 30px 0;
+            text-align: left;
+            font-family: Arial, sans-serif;
+        ">Quick Search</h1>
+        
+        <form name="searchForm" role="search" method="get" action="https://uri-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self" onsubmit="searchPrimo()" style="
+            display: flex;
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        ">
+            <input name="vid" value="01URI" type="hidden">    
+            <input type="hidden" id="primoQuery" name="query" />
+            <input type="text" size="25" id="primoQueryTemp" name="queryTemp" placeholder="Search our catalog, articles, and more" aria-label="Library Search Input" onkeypress="return searchKeyPress(event);" style="
+                flex-grow: 1;
+                padding: 18px 24px;
+                font-size: 1.2em;
+                border: none;
+                outline: none;
+                background-color: white;
+                font-family: Arial, sans-serif;
+            ">
+            <button id="go" type="button" onclick="searchPrimo();" aria-label="Search" style="
+                background-color: #c79316; 
+                color: #002147; 
+                border: none;
+                padding: 18px 28px;
+                cursor: pointer;
+                font-size: 1.2em;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            ">
+                &#128269;
+            </button>
+        </form>
+        
+        <div class="quick-links" style="
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px; 
+            justify-items: start;
+            max-width: 720px;
+            margin: 0;
+        ">
+            <a href="https://uri-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=01URI&mode=advanced" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff; /* White text */
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">Advanced Search</a>
+            <a href="http://uri.libguides.com/az.php" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">Articles and Databases</a>
+            <a href="https://uri-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=01URI&tab=course_tab" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">Course Reserves</a>
+            <a href="https://uri-primo.hosted.exlibrisgroup.com/primo-explore/jsearch?vid=01URI&lang=en_US" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                white-space: nowrap;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">e-Journals</a>
+            <a href="https://libkey.io/libraries/245/" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">Get PDF by DOI/PMID</a>
+            <a href="https://uri-primo.hosted.exlibrisgroup.com/primo-explore/login?vid=01URI&targetURL=https://uri-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=01URI&lang=en_US" class="link-button" style="
+                background-color: transparent;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                transition: all 0.2s ease;
+                text-align: center;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+            ">My Library Account</a>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    #library-search-container {
+        background-image: url('CAMK-20200505-NL-034.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex !important; 
+        align-items: center !important; 
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Frosted glass effect enhancement */
+    #library-search-container> div {
+        background: rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(12px) saturate(150%) brightness(90%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(150%) brightness(90%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    /* Fallback for browsers that don't support backdrop-filter */
+    @supports not (backdrop-filter: blur(12px)) {
+        #library-search-container > div {
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+    }
+    
+    /* Hover effects for buttons */
+    #library-search-container .link-button:hover {
+        background-color: #c79316 !important; 
+        color: #002147 !important; 
+        border-color: #c79316 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(199, 147, 22, 0.3) !important;
+    }
+    
+    /* Search button hover effect */
+    #library-search-container form button:hover {
+        background-color: #b5820f !important; 
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(199, 147, 22, 0.4) !important;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+        #library-search-container {
+            min-height: 400px;
+            padding: 20px 10px;
+        }
+        
+        #library-search-container > div {
+            padding: 30px 20px;
+        }
+        
+        #library-search-container h1 {
+            font-size: 2em !important;
+            margin-bottom: 20px !important;
+        }
+        
+        #library-search-container .quick-links {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 10px !important;
+        }
+        
+        #library-search-container form input,
+        #library-search-container form button {
+            padding: 15px 20px !important;
+            font-size: 1em !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        #library-search-container .quick-links {
+            grid-template-columns: 1fr !important;
+        }
+        
+        #library-search-container h1 {
+            font-size: 1.8em !important;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    function searchPrimo() {
+        document.getElementById("primoQuery").value = "any,contains," + document.getElementById("primoQueryTemp").value;
+        document.forms["searchForm"].submit();
+    }
+    
+    function searchKeyPress(e) {
+        if (typeof e == 'undefined' && window.event) {
+            e = window.event;
+        }
+        if (e.keyCode == 13) {
+            document.getElementById('go').click();
+        }
+    }
+</script>
