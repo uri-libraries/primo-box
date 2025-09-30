@@ -204,7 +204,7 @@
         box-sizing: border-box !important;
     }
     
-    /* Frosted glass effect enhancement */
+    /* Frosted glass */
     #library-search-container> div {
         background: rgba(0, 0, 0, 0.4) !important;
         backdrop-filter: blur(12px) saturate(150%) brightness(90%) !important;
@@ -213,7 +213,7 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
     }
     
-    /* Fallback for browsers that don't support backdrop-filter */
+    /* Fallback w/o backdrop */
     @supports not (backdrop-filter: blur(12px)) {
         #library-search-container > div {
             background: rgba(0, 0, 0, 0.6) !important;
@@ -236,7 +236,7 @@
         box-shadow: 0 4px 12px rgba(199, 147, 22, 0.4) !important;
     }
     
-    /* Responsive design */
+    /* Responsive */
     @media (max-width: 768px) {
         #library-search-container {
             min-height: 400px;
